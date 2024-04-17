@@ -61,6 +61,7 @@ jobs:
                  cd duckdb
                  git tag ${{ inputs.duckdb_tag }}
                  git apply ../cmake.patch
+                 git apply ../more_cmake.patch
                  cp ../extension_config_local.cmake extension/extension_config.cmake
 
             - name: Build Wasm module MVP
