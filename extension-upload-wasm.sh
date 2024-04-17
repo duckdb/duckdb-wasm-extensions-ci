@@ -23,8 +23,8 @@ for f in $FILES
 do
         ext=`basename $f .duckdb_extension.wasm`
         echo $ext
-        cat $ext > $append
-        truncate -s -256 $append
+        cat $ext > $f.append
+        truncate -s -256 $f.append
         # the actual payload, 256 bytes, to be added later
         ./compute-extension-hash.sh $f.append > $f.hash
         # encrypt hash with extension signing private key to create signature
