@@ -68,17 +68,17 @@ jobs:
             - name: Build Wasm module MVP
               if: ${{ matrix.duckdb_wasm_arch == 'wasm_mvp' }}
               run: |
-                DUCKDB_PLATFORM=wasm_mvp make wasm_mvp
+                cd duckdb && DUCKDB_PLATFORM=wasm_mvp make wasm_mvp
 
             - name: Build Wasm module EH
               if: ${{ matrix.duckdb_wasm_arch == 'wasm_eh' }}
               run: |
-                DUCKDB_PLATFORM=wasm_eh make wasm_eh
+                cd duckdb && DUCKDB_PLATFORM=wasm_eh make wasm_eh
 
             - name: Build Wasm module THREADS
               if: ${{ matrix.duckdb_wasm_arch == 'wasm_threads' }}
               run: |
-                DUCKDB_PLATFORM=wasm_threads make wasm_threads CMAKE_C_FLAGS="-pthread"
+                cd duckdb && DUCKDB_PLATFORM=wasm_threads make wasm_threads CMAKE_C_FLAGS="-pthread"
 
             - name: Upload artifact
               uses: actions/upload-artifact@v3
