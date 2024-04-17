@@ -80,5 +80,45 @@ jobs:
               uses: actions/upload-artifact@v3
               with:
                   name: duckdb_extensions_${{ env.DUCKDB_PLATFORM }}
-                  path: build/${{ matrix.duckdb_wasm_arch }}/repository/${{ inputs.duckdb_tag }}/${{ env.DUCKDB_PLATFORM }}
+                  path: duckdb/build/${{ matrix.duckdb_wasm_arch }}/repository/${{ inputs.duckdb_tag }}/${{ env.DUCKDB_PLATFORM }}
                   retention-days: 1
+
+  publish:
+    name: Publish extensions
+    runs-on: ubuntu-latest
+    needs:
+    - build_wasm
+    strategy:
+      matrix:
+        duckdb_arch: ${{ fromJSON(github.event.inputs.platforms) }}
+    steps:
+            - uses: actions/checkout@v3
+
+            - uses: actions/download-artifact@v3
+              with:
+                name: duckdb_extensions_${{ matrix.duckdb_arch }}
+                path: build/to_be_deployed/${{ inputs.duckdb_tag }}/${{ matrix.duckdb_arch }}
+
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.12'
+
+            - name: Install aws
+              run: |
+                  pip install awscli
+
+            - name: Sign and deploy Wasm extensions (no credentials)
+              if: ${{ ! inputs.release_s3 }}
+              run: |
+                  bash ./extension-upload-wasm.sh ${{ matrix.duckdb_arch }} ${{ inputs.duckdb_tag }}
+
+            - name: Sign and deploy Wasm extensions (with credentials)
+              if: ${{ inputs.release_s3 }}
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_DUCKDB_ORG_DEPLOY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_DUCKDB_ORG_DEPLOY_KEY }}
+                  AWS_DEFAULT_REGION: ${{ secrets.S3_DUCKDB_ORG_REGION }}
+                  BUCKET_NAME: ${{ secrets.S3_DUCKDB_ORG_BUCKET }}
+                  DUCKDB_EXTENSION_SIGNING_PK: ${{ secrets.S3_DUCKDB_ORG_EXTENSION_SIGNING_PK }}
+              run: |
+                  bash ./extension-upload-wasm.sh ${{ matrix.duckdb_arch }} ${{ inputs.duckdb_tag }}
