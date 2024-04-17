@@ -80,5 +80,5 @@ jobs:
               uses: actions/upload-artifact@v3
               with:
                   name: duckdb_extensions_${{ env.DUCKDB_PLATFORM }}
-                  path: build/extension_repository/${{ inputs.duckdb_ref }}/${{ env.DUCKDB_PLATFORM }}
+                  path: build/${{ matrix.duckdb_wasm_arch }}/repository/${{ inputs.duckdb_ref }}/${{ env.DUCKDB_PLATFORM }}
                   retention-days: 1
