@@ -27,6 +27,8 @@ jobs:
       matrix:
         duckdb_wasm_arch: ${{ fromJSON(github.event.inputs.platforms) }}
     env:
+      VCPKG_TARGET_TRIPLET: "wasm32-emscripten"
+      GEN: Ninja
       VCPKG_TOOLCHAIN_PATH: ${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
       DUCKDB_PLATFORM: "${{ matrix.duckdb_wasm_arch }}"
 
@@ -36,7 +38,7 @@ jobs:
                   fetch-depth: 0
                   submodules: true
 
-            - uses: mymindstorm/setup-emsdk@v12
+            - uses: mymindstorm/setup-emsdk@v13
               with:
                   version: 'latest'
 
