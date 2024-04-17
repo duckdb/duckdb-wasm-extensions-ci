@@ -10,33 +10,6 @@ duckdb_extension_load(httpfs
 	LINKED_LIBS "../../third_party/mbedtls/libduckdb_mbedtls.a ../../vcpkg_installed/wasm32-emscripten/lib/libcrypto.a ../../vcpkg_installed/wasm32-emscripten/lib/libssl.a"
 	)
 
-duckdb_extension_load(excel
-	DONT_LINK
-	)
-duckdb_extension_load(fts
-	DONT_LINK
-	)
-duckdb_extension_load(inet
-	DONT_LINK
-	)
-duckdb_extension_load(icu
-	DONT_LINK
-	)
-duckdb_extension_load(json
-	DONT_LINK
-	)
-duckdb_extension_load(parquet
-	DONT_LINK
-	)
-duckdb_extension_load(sqlsmith
-	DONT_LINK
-	)
-duckdb_extension_load(tpcds
-	DONT_LINK
-	)
-duckdb_extension_load(tpch
-	DONT_LINK
-	)
 ################ SPATIAL
 #    duckdb_extension_load(spatial
 #            DONT_LINK LOAD_TESTS
@@ -66,11 +39,6 @@ duckdb_extension_load(vss
        GIT_URL https://github.com/duckdb/duckdb_vss
        GIT_TAG 8145f41d97178e82bed3376215eb8d02bcf1eec5
 )
-    duckdb_extension_load(arrow
-            LOAD_TESTS DONT_LINK
-            GIT_URL https://github.com/duckdb/arrow
-            GIT_TAG 9e10240da11f61ea7fbfe3fc9988ffe672ccd40f
-            )
     duckdb_extension_load(azure
             LOAD_TESTS
             GIT_URL https://github.com/duckdb/duckdb_azure
