@@ -2,13 +2,8 @@ name: DuckDB-Wasm extensions
 on:
   workflow_dispatch:
     inputs:
-      # Git ref of the duckdb-wasm repo
-      duckdb_wasm_ref:
-        required: true
-        type: string
       # Git ref of the duckdb repo
-      duckdb_ref:
-        required: true
+      duckdb_tag:
         type: string
       # Git ref of the duckdb repo
       platforms:
@@ -62,6 +57,7 @@ jobs:
             - name: PatchDuckDB
               run: |
                  cd duckdb
+                 git tag ${{ inputs.duckdb_tag }}
                  git apply ../cmake.patch
                  cp ../extension_config_local.cmake extension/extension_config.cmake
 
