@@ -1,8 +1,5 @@
 name: DuckDB-Wasm extensions
 on:
-  push:
-    branches:
-      - 'main'
   workflow_dispatch:
     inputs:
       # Git ref of the duckdb repo
