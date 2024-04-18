@@ -60,7 +60,6 @@ jobs:
             - name: PatchDuckDB
               run: |
                  cd duckdb
-                 git tag ${{ inputs.duckdb_tag }}
                  git apply ../cmake.patch
                  cp ../extension_config_local.cmake extension/extension_config.cmake
 
