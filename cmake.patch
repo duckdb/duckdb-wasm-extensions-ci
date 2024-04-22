@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5f199d3518..bd459e0ce0 100644
+index 5f199d3518..417f3e1157 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -83,6 +83,13 @@ if (EXTENSION_STATIC_BUILD AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
@@ -27,7 +27,7 @@ index 5f199d3518..bd459e0ce0 100644
        TARGET ${TARGET_NAME}
        POST_BUILD
 -      COMMAND emcc $<TARGET_FILE:${TARGET_NAME}>.lib -o $<TARGET_FILE:${TARGET_NAME}> -sSIDE_MODULE=1 -O3
-+      COMMAND emcc -v $<TARGET_FILE:${TARGET_NAME}>.lib -o $<TARGET_FILE:${TARGET_NAME}> -O3 -sSIDE_MODULE=2 -sEXPORTED_FUNCTIONS="_${NAME}_init" ${WASM_THREAD_FLAGS} ${LINKED_LIBS_STR}
++      COMMAND emcc -v $<TARGET_FILE:${TARGET_NAME}>.lib -o $<TARGET_FILE:${TARGET_NAME}> -O3 -sSIDE_MODULE=2 -sEXPORTED_FUNCTIONS="_${NAME}_init" ${WASM_THREAD_FLAGS} "${LINKED_LIBS_STR}"
        )
    endif()
    add_custom_command(
