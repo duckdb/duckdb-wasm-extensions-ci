@@ -21,7 +21,7 @@ index 5f199d3518..820ee57fcc 100644
        TARGET ${TARGET_NAME}
        POST_BUILD
 -      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_NAME}> $<TARGET_FILE:${TARGET_NAME}>.lib
-+      COMMAND ${CMAKE_COMMAND} -E mv $<TARGET_FILE:${TARGET_NAME}> $<TARGET_FILE:${TARGET_NAME}>.lib
++      COMMAND ${CMAKE_COMMAND} -E rename $<TARGET_FILE:${TARGET_NAME}> $<TARGET_FILE:${TARGET_NAME}>.lib
        )
      # Compile the library into the actual wasm file
 +    string(TOUPPER ${NAME} EXTENSION_NAME_UPPERCASE)
