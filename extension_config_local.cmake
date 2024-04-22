@@ -5,7 +5,6 @@
 #   EXTENSION_CONFIGS=.github/config/out_of_tree_extensions.cmake make
 #
 
-duckdb_extension_load(httpfs
+duckdb_extension_load(autocomplete
 	DONT_LINK
-	LINKED_LIBS "../../third_party/mbedtls/libduckdb_mbedtls.a;../../vcpkg_installed/wasm32-emscripten/lib/libcrypto.a;../../vcpkg_installed/wasm32-emscripten/lib/libssl.a"
 	)
