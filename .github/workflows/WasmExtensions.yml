@@ -8,7 +8,7 @@ on:
       # Git ref of the duckdb repo
       platforms:
         required: false
-        default: '["wasm_mvp", "wasm_eh"]'
+        default: '["wasm_mvp", "wasm_eh", "wasm_threads"]'
         type: string
       # Publish extensions on extensions.duckdb.org?
       release_s3:
