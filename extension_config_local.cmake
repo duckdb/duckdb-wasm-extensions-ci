@@ -9,6 +9,17 @@
 duckdb_extension_load(json DONT_LINK)
 duckdb_extension_load(icu DONT_LINK)
 duckdb_extension_load(parquet DONT_LINK)
+duckdb_extension_load(autocomplete DONT_LINK)
+duckdb_extension_load(excel DONT_LINK)
+duckdb_extension_load(fts DONT_LINK)
+duckdb_extension_load(httpfs DONT_LINK)
+duckdb_extension_load(inet DONT_LINK)
+duckdb_extension_load(icu DONT_LINK)
+duckdb_extension_load(json DONT_LINK)
+duckdb_extension_load(parquet DONT_LINK)
+duckdb_extension_load(sqlsmith DONT_LINK)
+duckdb_extension_load(tpcds DONT_LINK)
+duckdb_extension_load(tpch DONT_LINK)
 
 ################# SQLITE_SCANNER
 duckdb_extension_load(sqlite_scanner
@@ -36,12 +47,12 @@ duckdb_extension_load(vss
             )
 
 #
-################## SPATIAL
+################# SPATIAL
 #duckdb_extension_load(spatial
-#    DONT_LINK LOAD_TESTS
-#    GIT_URL https://github.com/carlopi/duckdb_spatial.git
-#    GIT_TAG 71d24654b0fff5593b69d36878b9b8777f023d79
-#    INCLUDE_DIR spatial/include
-#    TEST_DIR test/sql
-#    LINKED_LIBS "../../deps/local/lib/*.a"
-#    )
+ #   DONT_LINK LOAD_TESTS
+ #   GIT_URL https://github.com/carlopi/duckdb_spatial.git
+ #   GIT_TAG main
+ #   INCLUDE_DIR spatial/include
+ #   TEST_DIR test/sql
+ #   LINKED_LIBS "../../deps/local/lib/*.a"
+ #   )
