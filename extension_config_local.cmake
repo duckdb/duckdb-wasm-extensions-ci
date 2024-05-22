@@ -25,25 +25,25 @@ duckdb_extension_load(tpch DONT_LINK)
 duckdb_extension_load(sqlite_scanner
         DONT_LINK LOAD_TESTS
         GIT_URL https://github.com/duckdb/sqlite_scanner
-        GIT_TAG main
+        GIT_TAG 50b7870be099186f195bc72bac5e9e11247ee2f9
         )
 
 ################# SUBSTRAIT
 duckdb_extension_load(substrait
             LOAD_TESTS DONT_LINK
             GIT_URL https://github.com/duckdb/substrait
-            GIT_TAG main
+            GIT_TAG 237931391ebc7e6aee7aa81052fa1411f6c4128e
            )
 
 duckdb_extension_load(vss
        LOAD_TESTS DONT_LINK
        GIT_URL https://github.com/duckdb/duckdb_vss
-       GIT_TAG main
+       GIT_TAG 690bfc56c82b54f4580dabbc2769e2925db61499
 )
     duckdb_extension_load(azure
             LOAD_TESTS
             GIT_URL https://github.com/duckdb/duckdb_azure
-            GIT_TAG main
+            GIT_TAG 49b63dc8cd166952a0a34dfd54e6cfe5b823e05e
             )
 
 #
