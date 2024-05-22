@@ -10,30 +10,30 @@ duckdb_extension_load(json DONT_LINK)
 duckdb_extension_load(icu DONT_LINK)
 duckdb_extension_load(parquet DONT_LINK)
 
-################## SQLITE_SCANNER
-#duckdb_extension_load(sqlite_scanner
-#        DONT_LINK LOAD_TESTS
-#        GIT_URL https://github.com/duckdb/sqlite_scanner
-#        GIT_TAG main
-#        )
-#
-################## SUBSTRAIT
-#duckdb_extension_load(substrait
-#            LOAD_TESTS DONT_LINK
-#            GIT_URL https://github.com/duckdb/substrait
-#            GIT_TAG main
-#           )
+################# SQLITE_SCANNER
+duckdb_extension_load(sqlite_scanner
+        DONT_LINK LOAD_TESTS
+        GIT_URL https://github.com/duckdb/sqlite_scanner
+        GIT_TAG main
+        )
 
-#duckdb_extension_load(vss
-#       LOAD_TESTS DONT_LINK
-#       GIT_URL https://github.com/duckdb/duckdb_vss
-#       GIT_TAG main
-#)
-#    duckdb_extension_load(azure
-#            LOAD_TESTS
-#            GIT_URL https://github.com/duckdb/duckdb_azure
-#            GIT_TAG main
-#            )
+################# SUBSTRAIT
+duckdb_extension_load(substrait
+            LOAD_TESTS DONT_LINK
+            GIT_URL https://github.com/duckdb/substrait
+            GIT_TAG main
+           )
+
+duckdb_extension_load(vss
+       LOAD_TESTS DONT_LINK
+       GIT_URL https://github.com/duckdb/duckdb_vss
+       GIT_TAG main
+)
+    duckdb_extension_load(azure
+            LOAD_TESTS
+            GIT_URL https://github.com/duckdb/duckdb_azure
+            GIT_TAG main
+            )
 
 #
 ################## SPATIAL
