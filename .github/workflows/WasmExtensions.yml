@@ -32,6 +32,7 @@ jobs:
       VCPKG_TOOLCHAIN_PATH: ${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
       DUCKDB_PLATFORM: "${{ matrix.duckdb_wasm_arch }}"
       USE_MERGED_VCPKG_MANIFEST: 1 
+      TOOLCHAIN_FLAGS: "-DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$(EMSDK)/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
 
     steps:
             - uses: actions/checkout@v3
