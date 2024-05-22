@@ -27,12 +27,12 @@ jobs:
       matrix:
         duckdb_wasm_arch: ${{ fromJSON(github.event.inputs.platforms) }}
     env:
-      VCPKG_TARGET_TRIPLET: "wasm32-emscripten"
-      GEN: Ninja
-      VCPKG_TOOLCHAIN_PATH: ${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+      # VCPKG_TARGET_TRIPLET: "wasm32-emscripten"
+      # GEN: Ninja
+      # VCPKG_TOOLCHAIN_PATH: ${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
       DUCKDB_PLATFORM: "${{ matrix.duckdb_wasm_arch }}"
-      USE_MERGED_VCPKG_MANIFEST: 1 
-      TOOLCHAIN_FLAGS: "-DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$(EMSDK)/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DVCPKG_BUILD=1 -DVCPKG_MANIFEST_DIR='build/extension_configuration' -DVCPKG_TARGET_TRIPLET=wasm32-emscripten -DCMAKE_TOOLCHAIN_FILE='${VCPKG_TOOLCHAIN_PATH}'"
+      # USE_MERGED_VCPKG_MANIFEST: 1 
+      # TOOLCHAIN_FLAGS: "-DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=$(EMSDK)/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DVCPKG_BUILD=1 -DVCPKG_MANIFEST_DIR='build/extension_configuration' -DVCPKG_TARGET_TRIPLET=wasm32-emscripten -DCMAKE_TOOLCHAIN_FILE='${VCPKG_TOOLCHAIN_PATH}'"
 
     steps:
             - uses: actions/checkout@v3
@@ -64,6 +64,7 @@ jobs:
                  git tag v0.10.3
                  #git apply ../cmake.patch
                  cp ../extension_config_local.cmake extension/extension_config.cmake
+                 cp ../extension_no_vcpkg.cmake extension/extension_config.cmake
 
             - name: Build Wasm module MVP
               if: ${{ matrix.duckdb_wasm_arch == 'wasm_mvp' }}

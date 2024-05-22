@@ -49,14 +49,3 @@ duckdb_extension_load(vss
             GIT_URL https://github.com/duckdb/duckdb_azure
             GIT_TAG 49b63dc8cd166952a0a34dfd54e6cfe5b823e05e
             )
-
-#
-################# SPATIAL
-#duckdb_extension_load(spatial
- #   DONT_LINK LOAD_TESTS
- #   GIT_URL https://github.com/carlopi/duckdb_spatial.git
- #   GIT_TAG main
- #   INCLUDE_DIR spatial/include
- #   TEST_DIR test/sql
- #   LINKED_LIBS "../../deps/local/lib/*.a"
- #   )
