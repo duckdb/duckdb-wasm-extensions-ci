@@ -12,7 +12,6 @@ duckdb_extension_load(parquet DONT_LINK)
 duckdb_extension_load(autocomplete DONT_LINK)
 duckdb_extension_load(excel DONT_LINK)
 duckdb_extension_load(fts DONT_LINK)
-duckdb_extension_load(httpfs DONT_LINK)
 duckdb_extension_load(inet DONT_LINK)
 duckdb_extension_load(icu DONT_LINK)
 duckdb_extension_load(json DONT_LINK)
@@ -20,6 +19,11 @@ duckdb_extension_load(parquet DONT_LINK)
 duckdb_extension_load(sqlsmith DONT_LINK)
 duckdb_extension_load(tpcds DONT_LINK)
 duckdb_extension_load(tpch DONT_LINK)
+
+duckdb_extension_load(httpfs
+       DONT_LINK
+       LINKED_LIBS "../../third_party/mbedtls/libduckdb_mbedtls.a;../../vcpkg_installed/wasm32-emscripten/lib/libcrypto.a;../../vcpkg_installed/wasm32-emscripten/lib/libssl.a"
+       )
 
 ################# SQLITE_SCANNER
 duckdb_extension_load(sqlite_scanner
