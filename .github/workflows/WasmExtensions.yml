@@ -52,7 +52,8 @@ jobs:
             - name: PatchDuckDB
               run: |
                  cd duckdb
-                 git apply ../cmake.patch
+                 git tag v0.10.3
+                 #git apply ../cmake.patch
                  cp ../extension_config_local.cmake extension/extension_config.cmake
 
             - name: Build Wasm module MVP
