@@ -61,7 +61,6 @@ jobs:
             - name: PatchDuckDB
               run: |
                  cd duckdb
-                 git tag v0.10.3
                  #git apply ../cmake.patch
                  cp ../extension_config_local.cmake extension/extension_config.cmake
                  cp ../extension_no_vcpkg.cmake extension/extension_config.cmake
