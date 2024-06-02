@@ -169,13 +169,16 @@ wasm_mvp:
 	mkdir -p build/wasm_mvp
 	emcmake cmake $(GENERATOR) $(EXTENSION_FLAGS) $(WASM_COMPILE_TIME_COMMON_FLAGS) -Bbuild/wasm_mvp -DCMAKE_CXX_FLAGS="$(WASM_CXX_MVP_FLAGS)" -S $(DUCKDB_SRCDIR) -DDUCKDB_EXPLICIT_PLATFORM=wasm_mvp -DDUCKDB_CUSTOM_PLATFORM=wasm_mvp
 	emmake make -j8 -Cbuild/wasm_mvp
+        emcc build/wasm_mvp/extension/spatial/spatial.duckdb_extension -o build/wasm_mvp/extension/spatial/spatial.duckdb_extension.wasm -O3 -sSIDE_MODULE=2 -sEXPORTED_FUNCTIONS="_spatial_init,_spatial_version" build/wasm_mvp/deps/local/lib/*.a build/wasm_mvp/third_party/*/*.a
 
 wasm_eh:
 	mkdir -p build/wasm_eh
 	emcmake cmake $(GENERATOR) $(EXTENSION_FLAGS) $(WASM_COMPILE_TIME_COMMON_FLAGS) -Bbuild/wasm_eh -DCMAKE_CXX_FLAGS="$(WASM_CXX_EH_FLAGS)" -S $(DUCKDB_SRCDIR) -DDUCKDB_EXPLICIT_PLATFORM=wasm_eh -DDUCKDB_CUSTOM_PLATFORM=wasm_eh
 	emmake make -j8 -Cbuild/wasm_eh
+        emcc build/wasm_eh/extension/spatial/spatial.duckdb_extension -o build/wasm_eh/extension/spatial/spatial.duckdb_extension.wasm -O3 -sSIDE_MODULE=2 -sEXPORTED_FUNCTIONS="_spatial_init,_spatial_version" build/wasm_eh/deps/local/lib/*.a build/wasm_eh/third_party/*/*.a
 
 wasm_threads:
 	mkdir -p ./build/wasm_threads
 	emcmake cmake $(GENERATOR) $(EXTENSION_FLAGS) $(WASM_COMPILE_TIME_COMMON_FLAGS) -Bbuild/wasm_threads -DCMAKE_CXX_FLAGS="$(WASM_CXX_THREADS_FLAGS)" -S $(DUCKDB_SRCDIR) -DDUCKDB_EXPLICIT_PLATFORM=wasm_threads -DDUCKDB_CUSTOM_PLATFORM=wasm_threads
 	emmake make -j8 -Cbuild/wasm_threads
+        emcc build/wasm_threads/extension/spatial/spatial.duckdb_extension -o build/wasm_threads/extension/spatial/spatial.duckdb_extension.wasm -O3 -sSIDE_MODULE=2 -sEXPORTED_FUNCTIONS="_spatial_init,_spatial_version" build/wasm_threads/deps/local/lib/*.a build/wasm_threads/third_party/*/*.a
