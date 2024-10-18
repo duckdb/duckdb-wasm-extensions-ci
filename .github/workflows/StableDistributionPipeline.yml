@@ -27,6 +27,7 @@ jobs:
     uses: duckdb/extension-ci-tools/.github/workflows/_extension_distribution.yml@main
     with:
       duckdb_version: v1.1.2
+      ci_tools_version: main
       extension_name: spatial
       exclude_archs: 'windows_amd64;windows_amd64_rtools'
 
