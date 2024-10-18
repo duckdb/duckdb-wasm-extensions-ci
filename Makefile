@@ -178,3 +178,12 @@ wasm_threads:
 	mkdir -p ./build/wasm_threads
 	emcmake cmake $(GENERATOR) $(EXTENSION_FLAGS) $(WASM_COMPILE_TIME_COMMON_FLAGS) -Bbuild/wasm_threads -DCMAKE_CXX_FLAGS="$(WASM_CXX_THREADS_FLAGS)" -S $(DUCKDB_SRCDIR) -DDUCKDB_EXPLICIT_PLATFORM=wasm_threads -DDUCKDB_CUSTOM_PLATFORM=wasm_threads
 	emmake make -j8 -Cbuild/wasm_threads
+
+set_duckdb_version:
+	cd duckdb && git checkout $(DUCKDB_GIT_VERSION)
+
+set_duckdb_tag:
+	cd duckdb && git tag $(DUCKDB_TAG)
+
+output_distribution_matrix:
+	cat duckdb/.github/config/distribution_matrix.json
