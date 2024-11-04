@@ -40,3 +40,4 @@ jobs:
       duckdb_version: v1.1.3
       extension_name: spatial
       exclude_archs: 'linux_amd64_gcc4;linux_amd64;linux_arm64;osx_amd64;osx_arm64;windows_amd64_rtools;windows_amd64'
+      deploy_latest: true
