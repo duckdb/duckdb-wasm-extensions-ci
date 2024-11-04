@@ -26,7 +26,7 @@ jobs:
     name: Build extension binaries
     uses: duckdb/extension-ci-tools/.github/workflows/_extension_distribution.yml@v1.1.0
     with:
-      duckdb_version: v1.1.0
+      duckdb_version: 19864453f7
       extension_name: spatial
 
   duckdb-stable-deploy:
@@ -35,6 +35,6 @@ jobs:
     uses: duckdb/extension-ci-tools/.github/workflows/_extension_deploy.yml@v1.1.0
     secrets: inherit
     with:
-      duckdb_version: v1.1.0
+      duckdb_version: 19864453f7
       extension_name: spatial
       deploy_latest: ${{ startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/v1.1.0' }}
